@@ -65,6 +65,7 @@ USER kx
 RUN . /opt/conda/etc/profile.d/conda.sh \
 	&& conda activate kx \
 	&& conda install python==3.6 \
+	&& conda install wrapt \
 	&& conda install --file /opt/kx/nlp/requirements.txt \ 
 	&& pip install -r /opt/kx/mlnotebooks/requirements.txt \
 	&& conda install -c anaconda graphviz \
