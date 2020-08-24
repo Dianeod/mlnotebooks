@@ -1,5 +1,4 @@
 language: c
-install: travis_wait 50 mvn install
 os:
 - linux
 git:
@@ -11,7 +10,7 @@ jobs:
       services:
         - docker
       script:
-        - docker build -t kxsys/mlnotebooks:latest -f docker/Dockerfile .
+        - travis_wait 50 docker build -t kxsys/mlnotebooks:latest -f docker/Dockerfile .
         - docker tag kxsys/mlnotebooks:latest kxsys/mlnotebooks:$TRAVIS_BRANCH
       deploy:
         provider: script
