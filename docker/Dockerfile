@@ -55,6 +55,7 @@ LABEL	org.label-schema.schema-version="0.1" \
 
 RUN apt-get -yy --no-install-recommends install build-essential \
 	&& apt-get clean \
+	&& apt-get install -y pkg-config \
 	&& find /var/lib/apt/lists -type f -delete
 
 RUN chown -R kx:kx /opt/kx/mlnotebooks 
@@ -62,11 +63,11 @@ RUN chown -R kx:kx /opt/kx/mlnotebooks
 USER kx
 # jupyterq is the base, install requirements for nlp, ml, automl and mlnotebooks
 RUN . /opt/conda/etc/profile.d/conda.sh \
-	&& conda activate kx \
+	&& conda activate kx \ 
+	&& conda install --file /opt/kx/nlp/requirements.txt \ 
 	&& conda install wrapt \
-        && pip install -r /opt/kx/mlnotebooks/requirements.txt \ 
-	&& conda install --file /opt/kx/nlp/requirements.txt \
-	&& conda install -c anaconda graphviz \ 
+	&& pip install -r /opt/kx/mlnotebooks/requirements.txt \
+	&& conda install -c anaconda graphviz \
 	&& conda install -c conda-forge --file /opt/kx/ml/requirements.txt \ 
 	&& conda install -c conda-forge --file /opt/kx/automl/requirements.txt \
 	&& conda clean -y --all \
