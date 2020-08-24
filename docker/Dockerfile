@@ -65,7 +65,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh \
 	&& conda activate kx \ 
 	&& conda install --file /opt/kx/nlp/requirements.txt \
 	&& conda install -c anaconda graphviz \ 
-	&& conda install -c conda-forge --file /opt/kx/mlnotebooks/requirements.txt \
+	&& conda install --file /opt/kx/mlnotebooks/requirements.txt \
 	&& conda install -c conda-forge --file /opt/kx/ml/requirements.txt \ 
 	&& conda install -c conda-forge --file /opt/kx/automl/requirements.txt \
 	&& conda clean -y --all \
