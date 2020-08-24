@@ -65,7 +65,8 @@ RUN . /opt/conda/etc/profile.d/conda.sh \
 	&& conda activate kx \ 
 	&& conda install --file /opt/kx/nlp/requirements.txt \
 	&& conda install wrapt \
-	&& apt-get install libfreetype6-dev \ 
+	&& conda install freetype \
+	&& conda install libpng \ 
 	&& pip install -r /opt/kx/mlnotebooks/requirements.txt \
 	&& conda install -c anaconda graphviz \
 	&& conda install -c conda-forge --file /opt/kx/ml/requirements.txt \ 
